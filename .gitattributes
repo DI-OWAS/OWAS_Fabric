@@ -1,0 +1,8 @@
+Fabric/macro/final_views/** linguist-generated=true
+.FABulous/bitStreamSpec.* linguist-generated=true
+.FABulous/pips.txt linguist-generated=true
+.FABulous/bel*.txt linguist-generated=true
+Fabric/eFPGA.v linguist-generated=true
+Fabric/eFPGA_top.v linguist-generated=true
+Tile/*/*_switch_matrix.v linguist-generated=true
+Tile/*/*_ConfigMem.v linguist-generated=true
