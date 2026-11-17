@@ -32,6 +32,13 @@ module clk_buf (
     assign X = A;
 endmodule
 
+module clk_leaf_buf (
+    input  wire A,
+    output wire X
+);
+    assign X = A;
+endmodule
+
 module cus_mux41 (
     input  wire A0 ,
     input  wire A1 ,
