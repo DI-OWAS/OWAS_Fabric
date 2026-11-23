@@ -5210,7 +5210,14 @@ assign Column_X9_FrameStrobe = FrameStrobe[MaxFramesPerCol*(9+1)-1:MaxFramesPerC
 assign Column_X10_FrameStrobe = FrameStrobe[MaxFramesPerCol*(10+1)-1:MaxFramesPerCol*10];
 
  //tile IO port will get directly connected to top-level tile module
-(* keep *) N_term_IO_W Tile_X0Y0_N_term_IO_W (
+(* keep *) N_term_IO_W
+`ifdef EMULATION
+    #(
+    .Emulate_Bitstream(`Tile_X0Y0_Emulate_Bitstream)
+    )
+`endif
+    Tile_X0Y0_N_term_IO_W
+    (
     .N1END(Tile_X0Y1_N1BEG),
     .N2MID(Tile_X0Y1_N2BEG),
     .N2END(Tile_X0Y1_N2BEGb),
@@ -5229,7 +5236,15 @@ assign Column_X10_FrameStrobe = FrameStrobe[MaxFramesPerCol*(10+1)-1:MaxFramesPe
 
 
  //tile IO port will get directly connected to top-level tile module
-(* keep *) EXT_PMOD Tile_X1Y0_EXT_PMOD (
+(* keep *) EXT_PMOD
+`ifdef EMULATION
+    #(
+    .Tile_X0Y0_Emulate_Bitstream(`Tile_X1Y0_Emulate_Bitstream),
+    .Tile_X1Y0_Emulate_Bitstream(`Tile_X2Y0_Emulate_Bitstream)
+    )
+`endif
+    Tile_X1Y0_EXT_PMOD
+    (
     .Tile_X0Y0_N1END(Tile_X1Y1_N1BEG),
     .Tile_X0Y0_N2MID(Tile_X1Y1_N2BEG),
     .Tile_X0Y0_N2END(Tile_X1Y1_N2BEGb),
@@ -5288,7 +5303,15 @@ assign Column_X10_FrameStrobe = FrameStrobe[MaxFramesPerCol*(10+1)-1:MaxFramesPe
 
 
  //tile IO port will get directly connected to top-level tile module
-(* keep *) NPU_CTRL_CFG Tile_X3Y0_NPU_CTRL_CFG (
+(* keep *) NPU_CTRL_CFG
+`ifdef EMULATION
+    #(
+    .Tile_X0Y0_Emulate_Bitstream(`Tile_X3Y0_Emulate_Bitstream),
+    .Tile_X1Y0_Emulate_Bitstream(`Tile_X4Y0_Emulate_Bitstream)
+    )
+`endif
+    Tile_X3Y0_NPU_CTRL_CFG
+    (
     .Tile_X0Y0_N1END(Tile_X3Y1_N1BEG),
     .Tile_X0Y0_N2MID(Tile_X3Y1_N2BEG),
     .Tile_X0Y0_N2END(Tile_X3Y1_N2BEGb),
@@ -5360,7 +5383,18 @@ assign Column_X10_FrameStrobe = FrameStrobe[MaxFramesPerCol*(10+1)-1:MaxFramesPe
 
 
  //tile IO port will get directly connected to top-level tile module
-(* keep *) NPU_ACCUM_N Tile_X5Y0_NPU_ACCUM_N (
+(* keep *) NPU_ACCUM_N
+`ifdef EMULATION
+    #(
+    .Tile_X0Y0_Emulate_Bitstream(`Tile_X5Y0_Emulate_Bitstream),
+    .Tile_X1Y0_Emulate_Bitstream(`Tile_X6Y0_Emulate_Bitstream),
+    .Tile_X2Y0_Emulate_Bitstream(`Tile_X7Y0_Emulate_Bitstream),
+    .Tile_X3Y0_Emulate_Bitstream(`Tile_X8Y0_Emulate_Bitstream),
+    .Tile_X4Y0_Emulate_Bitstream(`Tile_X9Y0_Emulate_Bitstream)
+    )
+`endif
+    Tile_X5Y0_NPU_ACCUM_N
+    (
     .Tile_X0Y0_N1END(Tile_X5Y1_N1BEG),
     .Tile_X0Y0_N2MID(Tile_X5Y1_N2BEG),
     .Tile_X0Y0_N2END(Tile_X5Y1_N2BEGb),
@@ -5517,7 +5551,14 @@ assign Column_X10_FrameStrobe = FrameStrobe[MaxFramesPerCol*(10+1)-1:MaxFramesPe
 
 
  //tile IO port will get directly connected to top-level tile module
-(* keep *) N_term_NPU_SLICE Tile_X10Y0_N_term_NPU_SLICE (
+(* keep *) N_term_NPU_SLICE
+`ifdef EMULATION
+    #(
+    .Emulate_Bitstream(`Tile_X10Y0_Emulate_Bitstream)
+    )
+`endif
+    Tile_X10Y0_N_term_NPU_SLICE
+    (
     .N1END(Tile_X10Y1_N1BEG),
     .N2MID(Tile_X10Y1_N2BEG),
     .N2END(Tile_X10Y1_N2BEGb),
@@ -15622,7 +15663,14 @@ assign Column_X10_FrameStrobe = FrameStrobe[MaxFramesPerCol*(10+1)-1:MaxFramesPe
 
 
  //tile IO port will get directly connected to top-level tile module
-(* keep *) S_term_IO_W Tile_X0Y17_S_term_IO_W (
+(* keep *) S_term_IO_W
+`ifdef EMULATION
+    #(
+    .Emulate_Bitstream(`Tile_X0Y17_Emulate_Bitstream)
+    )
+`endif
+    Tile_X0Y17_S_term_IO_W
+    (
     .S1END(Tile_X0Y16_S1BEG),
     .S2MID(Tile_X0Y16_S2BEG),
     .S2END(Tile_X0Y16_S2BEGb),
@@ -15641,7 +15689,14 @@ assign Column_X10_FrameStrobe = FrameStrobe[MaxFramesPerCol*(10+1)-1:MaxFramesPe
 
 
  //tile IO port will get directly connected to top-level tile module
-(* keep *) SOC_DEBUG_IO Tile_X1Y17_SOC_DEBUG_IO (
+(* keep *) SOC_DEBUG_IO
+`ifdef EMULATION
+    #(
+    .Emulate_Bitstream(`Tile_X1Y17_Emulate_Bitstream)
+    )
+`endif
+    Tile_X1Y17_SOC_DEBUG_IO
+    (
     .S1END(Tile_X1Y16_S1BEG),
     .S2MID(Tile_X1Y16_S2BEG),
     .S2END(Tile_X1Y16_S2BEGb),
@@ -15681,7 +15736,14 @@ assign Column_X10_FrameStrobe = FrameStrobe[MaxFramesPerCol*(10+1)-1:MaxFramesPe
 
 
  //tile IO port will get directly connected to top-level tile module
-(* keep *) SOC_DEBUG_IO Tile_X2Y17_SOC_DEBUG_IO (
+(* keep *) SOC_DEBUG_IO
+`ifdef EMULATION
+    #(
+    .Emulate_Bitstream(`Tile_X2Y17_Emulate_Bitstream)
+    )
+`endif
+    Tile_X2Y17_SOC_DEBUG_IO
+    (
     .S1END(Tile_X2Y16_S1BEG),
     .S2MID(Tile_X2Y16_S2BEG),
     .S2END(Tile_X2Y16_S2BEGb),
@@ -15721,7 +15783,14 @@ assign Column_X10_FrameStrobe = FrameStrobe[MaxFramesPerCol*(10+1)-1:MaxFramesPe
 
 
  //tile IO port will get directly connected to top-level tile module
-(* keep *) SOC_DEBUG_IO Tile_X3Y17_SOC_DEBUG_IO (
+(* keep *) SOC_DEBUG_IO
+`ifdef EMULATION
+    #(
+    .Emulate_Bitstream(`Tile_X3Y17_Emulate_Bitstream)
+    )
+`endif
+    Tile_X3Y17_SOC_DEBUG_IO
+    (
     .S1END(Tile_X3Y16_S1BEG),
     .S2MID(Tile_X3Y16_S2BEG),
     .S2END(Tile_X3Y16_S2BEGb),
@@ -15761,7 +15830,14 @@ assign Column_X10_FrameStrobe = FrameStrobe[MaxFramesPerCol*(10+1)-1:MaxFramesPe
 
 
  //tile IO port will get directly connected to top-level tile module
-(* keep *) SOC_DEBUG_IO Tile_X4Y17_SOC_DEBUG_IO (
+(* keep *) SOC_DEBUG_IO
+`ifdef EMULATION
+    #(
+    .Emulate_Bitstream(`Tile_X4Y17_Emulate_Bitstream)
+    )
+`endif
+    Tile_X4Y17_SOC_DEBUG_IO
+    (
     .S1END(Tile_X4Y16_S1BEG),
     .S2MID(Tile_X4Y16_S2BEG),
     .S2END(Tile_X4Y16_S2BEGb),
@@ -15801,7 +15877,18 @@ assign Column_X10_FrameStrobe = FrameStrobe[MaxFramesPerCol*(10+1)-1:MaxFramesPe
 
 
  //tile IO port will get directly connected to top-level tile module
-(* keep *) NPU_ACCUM_S Tile_X5Y17_NPU_ACCUM_S (
+(* keep *) NPU_ACCUM_S
+`ifdef EMULATION
+    #(
+    .Tile_X0Y0_Emulate_Bitstream(`Tile_X5Y17_Emulate_Bitstream),
+    .Tile_X1Y0_Emulate_Bitstream(`Tile_X6Y17_Emulate_Bitstream),
+    .Tile_X2Y0_Emulate_Bitstream(`Tile_X7Y17_Emulate_Bitstream),
+    .Tile_X3Y0_Emulate_Bitstream(`Tile_X8Y17_Emulate_Bitstream),
+    .Tile_X4Y0_Emulate_Bitstream(`Tile_X9Y17_Emulate_Bitstream)
+    )
+`endif
+    Tile_X5Y17_NPU_ACCUM_S
+    (
     .Tile_X0Y0_S1END(Tile_X5Y16_S1BEG),
     .Tile_X0Y0_S2MID(Tile_X5Y16_S2BEG),
     .Tile_X0Y0_S2END(Tile_X5Y16_S2BEGb),
@@ -15958,7 +16045,14 @@ assign Column_X10_FrameStrobe = FrameStrobe[MaxFramesPerCol*(10+1)-1:MaxFramesPe
 
 
  //tile IO port will get directly connected to top-level tile module
-(* keep *) S_term_NPU_SLICE Tile_X10Y17_S_term_NPU_SLICE (
+(* keep *) S_term_NPU_SLICE
+`ifdef EMULATION
+    #(
+    .Emulate_Bitstream(`Tile_X10Y17_Emulate_Bitstream)
+    )
+`endif
+    Tile_X10Y17_S_term_NPU_SLICE
+    (
     .S1END(Tile_X10Y16_S1BEG),
     .S2MID(Tile_X10Y16_S2BEG),
     .S2END(Tile_X10Y16_S2BEGb),
